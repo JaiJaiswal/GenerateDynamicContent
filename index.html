@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Quotes Generator</title>
+  <style>
+  
+
+    /* Styles for the quote generator */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #12131233;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: #f8b680f6;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(5, 5, 5, 0.1);
+    }
+    
+    h1 {
+      color:blueviolet;
+      margin-top: 0;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555555;
+    }
+    
+    select, button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      background-color: #ffffff;
+      color: #0c0c0cd7;
+      margin-bottom: 10px;
+    }
+    
+    .quote-container {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(20, 20, 20, 0.904);
+    }
+    
+    .quote {
+      font-style: italic;
+      color: #050505dc;
+      margin-bottom: 10px;
+    }
+    
+    .copy-button {
+      display: inline-block;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 3px;
+      background-color: #337ab7;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    
+    .copy-button:hover {
+      background-color: #286090;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <h1>Online Quotes Generator</h1>
+    <label for="category">Select Category:</label>
+    <select id="category">
+      <option value="inspire">Inspire</option>
+      <option value="life">Life</option>
+      <option value="love">Love</option>
+      <option value="funny">Funny</option>
+      <option value="pickuplines">Pickuplines</option>
+      <option value="motivational"> Motivational</option>
+    </select>
+    <br>
+    <label for="language">Select Language:</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="br">Bhojpuri</option>
+    </select>
+    <br>
+    <button onclick="generateQuote()">Generate Quote</button>
+    <div id="quoteContainer" class="quote"></div>
+    <button onclick="copyQuote()">Copy Quote</button>
+  </div>
+
+  <script>
+    function generateQuote() {
+      const category = document.getElementById("category").value;
+      const language = document.getElementById("language").value;
+      const quoteContainer = document.getElementById("quoteContainer");
+
+      // Retrieve the quotes based on the selected category and language
+      const selectedQuotes = quotes[category][language];
+
+      // Generate a random quote from the selected quotes
+      const randomIndex = Math.floor(Math.random() * selectedQuotes.length);
+      const randomQuote = selectedQuotes[randomIndex];
+
+      // Display the generated quote
+      quoteContainer.textContent = randomQuote;
+    }
+
+    function copyQuote() {
+      const quoteContainer = document.getElementById("quoteContainer");
+      const quoteText = quoteContainer.textContent;
+
+      // Create a temporary textarea element to copy the quote
+      const textarea = document.createElement("textarea");
+      textarea.value = quoteText;
+
+      // Append the textarea to the body and select its content
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      // Copy the selected text
+      document.execCommand("copy");
+
+      // Remove the temporary textarea
+      document.body.removeChild(textarea);
+
+      // Provide feedback to the user
+      alert("Quote copied to clipboard!");
+    }
+
+    // Quotes data
+    const quotes = {
+      inspire: {
+        en: [
+          "The only way to do great work is to love what you do.",
+          "ghfhghjjhkjhkjh",
+          "ftyghbhjgujb",
+          "Believe you can and you're halfway there.",
+          "The future belongs to those who believe in the beauty of their dreams."
+        ],
+        hi: [
+          "La única forma de hacer un gran trabajo es amar lo que haces.",
+          "Cree que puedes y estarás a mitad de camino.",
+          "El futuro pertenece a aquellos que creen en la belleza de sus sueños."
+        ],
+        br: [
+          "La seule façon de faire un grand travail est d'aimer ce que vous faites.",
+          "Croyez que vous le pouvez et vous êtes à mi-chemin.",
+          "L'avenir appartient à ceux qui croient en la beauté de leurs rêves."
+        ]
+      },
+      life: {
+        en: [
+          "The only way to do great work is to love what you do.",
+          "Believe you can and you're halfway there.",
+          "The future belongs to those who believe in the beauty of their dreams."
+        ],
+        hi: [
+          "La única forma de hacer un gran trabajo es amar lo que haces.",
+          "Cree que puedes y estarás a mitad de camino.",
+          "El futuro pertenece a aquellos que creen en la belleza de sus sueños."
+        ],
+        br: [
+          "La seule façon de faire un grand travail est d'aimer ce que vous faites.",
+          "Croyez que vous le pouvez et vous êtes à mi-chemin.",
+          "L'avenir appartient à ceux qui croient en la beauté de leurs rêves."
+        ]
+      },
+      love: {
+        en: [
+          "The only way to do great work is to love what you do.",
+          "Believe you can and you're halfway there.",
+          "The future belongs to those who believe in the beauty of their dreams."
+        ],
+        hi: [
+          "La única forma de hacer un gran trabajo es amar lo que haces.",
+          "Cree que puedes y estarás a mitad de camino.",
+          "El futuro pertenece a aquellos que creen en la belleza de sus sueños."
+        ],
+        br: [
+          "La seule façon de faire un grand travail est d'aimer ce que vous faites.",
+          "Croyez que vous le pouvez et vous êtes à mi-chemin.",
+          "L'avenir appartient à ceux qui croient en la beauté de leurs rêves."
+        ]
+      },
+       funny: {
+        en: [
+          "The only way to do great work is to love what you do.",
+          "Believe you can and you're halfway there.",
+          "The future belongs to those who believe in the beauty of their dreams."
+        ],
+        hi: [
+          "La única forma de hacer un gran trabajo es amar lo que haces.",
+          "Cree que puedes y estarás a mitad de camino.",
+          "El futuro pertenece a aquellos que creen en la belleza de sus sueños."
+        ],
+        br: [
+          "La seule façon de faire un grand travail est d'aimer ce que vous faites.",
+          "Croyez que vous le pouvez et vous êtes à mi-chemin.",
+          "L'avenir appartient à ceux qui croient en la beauté de leurs rêves."
+        ]
+      },
+       pickuplines: {
+        en: [
+          "The only way to do great work is to love what you do.",
+          "Believe you can and you're halfway there.",
+          "The future belongs to those who believe in the beauty of their dreams."
+        ],
+        hi: [
+          "La única forma de hacer un gran trabajo es amar lo que haces.",
+          "Cree que puedes y estarás a mitad de camino.",
+          "El futuro pertenece a aquellos que creen en la belleza de sus sueños."
+        ],
+        br: [
+          "La seule façon de faire un grand travail est d'aimer ce que vous faites.",
+          "Croyez que vous le pouvez et vous êtes à mi-chemin.",
+          "L'avenir appartient à ceux qui croient en la beauté de leurs rêves."
+        ]
+      },
+       motivational: {
+        en: [
+          "The only way to do great work is to love what you do.",
+          "Believe you can and you're halfway there.",
+          "The future belongs to those who believe in the beauty of their dreams."
+        ],
+        hi: [
+          "La única forma de hacer un gran trabajo es amar lo que haces.",
+          "Cree que puedes y estarás a mitad de camino.",
+          "El futuro pertenece a aquellos que creen en la belleza de sus sueños."
+        ],
+        br: [
+          "La seule façon de faire un grand travail est d'aimer ce que vous faites.",
+          "Croyez que vous le pouvez et vous êtes à mi-chemin.",
+          "L'avenir appartient à ceux qui croient en la beauté de leurs rêves."
+        ]
+      },
+    };
+</script>
+</body>
+</html>
+
